@@ -13,6 +13,7 @@ router.post("/user/signup", async (req, res) => {
   try {
     // console.log(req.body)
 
+    const userFound = await User.findOne({ email: req.body.email });
     if (!req.body.username || !req.body.email || !req.body.password) {
       res.status(400).json({ message: "Missing parameters" });
     }
